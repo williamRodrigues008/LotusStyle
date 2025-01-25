@@ -10,7 +10,7 @@ namespace LotusStyle.API.Interfaces
         List<Produto> BuscarProdutosPorNome(string nome);
         List<Produto> BuscarProdutosPedidosPorUltimo();
         Produto BuscarProdutosPorId(int id);
-        List<Produto> BuscarProdutosMaisPedidos(int id);
+        List<Produto> BuscarProdutosMaisPedidos();
 
     }
 }

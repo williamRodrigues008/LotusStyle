@@ -4,8 +4,8 @@ namespace LotusStyle.API.Interfaces
 {
     public interface IEscritaProduto
     {
-        Produto CriarProduto(Produto produto);
-        Produto AtualizarProduto(Produto produto);
-        Produto RemoverProduto(int id);
+        void CriarProduto(Produto produto);
+        Task AtualizarProduto(Produto produto);
+        Task RemoverProduto(int id);
     }
 }
