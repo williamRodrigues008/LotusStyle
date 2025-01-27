@@ -12,5 +12,6 @@
         public string? NacionalImportado { get; set; }
         public string? Imagem { get; set; }
         public decimal Preco { get; set; }
+        public ProdutoVendido? Vendido { get; set; }
     }
 }
