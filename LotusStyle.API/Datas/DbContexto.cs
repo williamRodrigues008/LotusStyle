@@ -7,8 +7,14 @@ namespace LotusStyle.API.Datas
     {
         public DbContexto(DbContextOptions<DbContexto> options) : base(options) { }
         
-        public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Produto> Produto { get; set; }
         public DbSet<ProdutoVendido> ProdutoVendido { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(DbContexto).Assembly);
+        }
 
     }
 }
