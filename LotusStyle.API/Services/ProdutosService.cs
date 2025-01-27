@@ -23,6 +23,7 @@ namespace LotusStyle.API.Services
                 .Select(p => new
                 {
                     p.Id,
+                    p.IdProduto,
                     p.Produto,
                     p.DataVenda
                 })
@@ -55,12 +56,12 @@ namespace LotusStyle.API.Services
 
         public Produto BuscarProdutosPorId(int id)
         {
-            return _ctx.Produtos.FirstOrDefault(p => p.Id == id)!;
+            return _ctx.Produto.FirstOrDefault(p => p.Id == id)!;
         }
 
         public List<Produto> BuscarProdutosPorMarca(string marca)
         {
-            var listaProdutosMarca = _ctx.Produtos.Where(p => p.Marca == marca).Select(p => new
+            var listaProdutosMarca = _ctx.Produto.Where(p => p.Marca == marca).Select(p => new
             {
                 p.Nome,
                 p.Imagem,
@@ -77,7 +78,7 @@ namespace LotusStyle.API.Services
 
         public List<Produto> BuscarProdutosPorNome(string nome)
         {
-            var listaProdutosNome = _ctx.Produtos.Where(p => p.Nome == nome).Select(p => new
+            var listaProdutosNome = _ctx.Produto.Where(p => p.Nome == nome).Select(p => new
             {
                 p.Nome,
                 p.Imagem,
@@ -94,7 +95,7 @@ namespace LotusStyle.API.Services
 
         public List<Produto> BuscarProdutosPorTipo(string tipo)
         {
-            var listaProdutosTipo = _ctx.Produtos.Where(p => p.Tipo == tipo).Select(p => new
+            var listaProdutosTipo = _ctx.Produto.Where(p => p.Tipo == tipo).Select(p => new
             {
                 p.Nome,
                 p.Imagem,
@@ -111,14 +112,14 @@ namespace LotusStyle.API.Services
 
         public List<Produto> BuscarTodosProdutos()
         {
-            return _ctx.Produtos.ToList();
+            return _ctx.Produto.ToList();
         }
 
         public async void CriarProduto(Produto produto)
         {
             if (string.IsNullOrEmpty(produto.Nome)) return;
 
-            await _ctx.Produtos.AddAsync(produto);
+            await _ctx.Produto.AddAsync(produto);
         }
 
         public async Task AtualizarProduto(Produto produto)
@@ -146,7 +147,7 @@ namespace LotusStyle.API.Services
             Produto? prod = BuscarProdutosPorId(id);
             if (string.IsNullOrEmpty(prod.Nome)) return;
 
-            _ctx.Produtos.Remove(prod);
+            _ctx.Produto.Remove(prod);
             
         }
     }
